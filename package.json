@@ -1,0 +1,57 @@
+{
+  "name": "@threads/tsconfig",
+  "description": "ThreadsStyling tsconfig, tslint, prettier etc. configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThreadsStyling/tsconfig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThreadsStyling/tsconfig/issues"
+  },
+  "homepage": "https://github.com/ThreadsStyling/tsconfig",
+  "license": "MIT",
+  "keywords": [
+    "tslint",
+    "typescript",
+    "prettier",
+    "commitlint",
+    "config"
+  ],
+  "scripts": {
+    "prettier:write": "prettier --ignore-path .gitignore --write './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
+    "prettier:check": "prettier --ignore-path .gitignore --list-different './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
+    "lint": "tslint './src/**/*.{ts,tsx}' -t verbose -p .",
+    "check-prettier-conflicts": "tslint-config-prettier-check './index.js' && tslint-config-prettier-check './react.js'",
+    "release": "semantic-release"
+  },
+  "dependencies": {
+    "@commitlint/config-conventional": "^8.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.18.2",
+    "semantic-release": "^15.13.17",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "tslint -t verbose -p .",
+      "git add"
+    ],
+    "*.{md,json,yaml,js,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
