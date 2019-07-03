@@ -77,7 +77,7 @@ yarn add -D @threads/tsconfig prettier
 and add the following `prettier.config.js` in your project's root directory:
 
 ```json
-module.exports = require('@threads/tslint/prettier');
+module.exports = require('@threads/tsconfig/prettier');
 ```
 
 In `package.json` add:
@@ -100,13 +100,13 @@ In `package.json` add:
 We recommend using husky with lint staged. To do this, run:
 
 ```sh
-yarn add -D @threads/tslint @commitlint/cli tslint prettier husky lint-staged
+yarn add -D @threads/tsconfig @commitlint/cli tslint prettier husky lint-staged
 ```
 
 add the following `commitlint.config.js` in your project's root directory:
 
 ```js
-module.exports = require('@threads/tslint/commitlint');
+module.exports = require('@threads/tsconfig/commitlint');
 ```
 
 and add the following to package.json. This will run prettier and tslint on just files that have changed, and enforce that commits all start with `feat:`/`fix:`/etc.
