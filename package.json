@@ -21,6 +21,7 @@
     "prettier:write": "prettier --ignore-path .gitignore --write './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
     "prettier:check": "prettier --ignore-path .gitignore --list-different './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
     "lint": "tslint './src/**/*.{ts,tsx}' -t verbose -p .",
+    "typecheck": "tsc --noEmit",
     "check-prettier-conflicts": "tslint-config-prettier-check './index.js' && tslint-config-prettier-check './react.js'",
     "release": "semantic-release"
   },

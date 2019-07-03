@@ -1,0 +1,75 @@
+version: 2.1
+
+refs:
+  container: &container
+    docker:
+      - image: node:10
+    working_directory: ~/repo
+
+commands:
+  install:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Versions
+          command: node -v && npm -v && yarn -v
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+  test:
+    steps:
+      - run:
+          name: Type Check
+          command: yarn typecheck
+      - run:
+          name: Prettier Check
+          command: yarn prettier:check
+      - run:
+          name: TSLint
+          command: yarn lint
+
+jobs:
+  all:
+    <<: *container
+    steps:
+      - checkout
+      - install
+      - test
+
+  master:
+    <<: *container
+    steps:
+      - checkout
+      - install
+      - test
+      - run:
+          name: Release
+          command: yarn release
+      - run:
+          name: Post to Slack on FAILURE
+          command: 'npx ci-scripts slack --eval --channel="devchat" --text="*\${PROJECT_NAME}* master build failed: \${BUILD_URL}" --icon_emoji=tired_face'
+          when: on_fail
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - all:
+          filters:
+            branches:
+              ignore:
+                - master
+  master:
+    jobs:
+      - master:
+          context: common-env-vars
+          filters:
+            branches:
+              only: master
