@@ -16,7 +16,10 @@ module.exports = {
       true,
       [
         ['Object', 'Avoid using the `Object` type. Did you mean `object`?'],
-        ['Function', 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.'],
+        [
+          'Function',
+          'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
+        ],
         ['Boolean', 'Avoid using the `Boolean` type. Did you mean `boolean`?'],
         ['Number', 'Avoid using the `Number` type. Did you mean `number`?'],
         ['String', 'Avoid using the `String` type. Did you mean `string`?'],
@@ -44,7 +47,11 @@ module.exports = {
     /**
      * Disallows traditional (non-arrow) function expressions.
      */
-    'only-arrow-functions': [true, 'allow-declarations', 'allow-named-functions'],
+    'only-arrow-functions': [
+      true,
+      'allow-declarations',
+      'allow-named-functions',
+    ],
     /**
      * Recommends a ‘for-of’ loop over a standard ‘for’ loop
      * if the index is only used to access the array being
