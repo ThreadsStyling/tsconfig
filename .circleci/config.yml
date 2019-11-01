@@ -3,7 +3,7 @@ version: 2.1
 refs:
   container: &container
     docker:
-      - image: node:10
+      - image: node:12
     working_directory: ~/repo
 
 commands:
@@ -52,10 +52,6 @@ jobs:
       - run:
           name: Release
           command: yarn release
-      - run:
-          name: Post to Slack on FAILURE
-          command: 'npx ci-scripts slack --eval --channel="devchat" --text="*\${PROJECT_NAME}* master build failed: \${BUILD_URL}" --icon_emoji=tired_face'
-          when: on_fail
 
 workflows:
   version: 2

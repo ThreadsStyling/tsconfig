@@ -1,20 +1,19 @@
 {
-  "name": "@threads/tsconfig",
-  "description": "ThreadsStyling tsconfig, tslint, prettier etc. configs",
+  "name": "@forbeslindesay/tsconfig",
+  "description": "Forbes Lindesay's tsconfig, tslint, prettier etc. configs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ThreadsStyling/tsconfig.git"
+    "url": "https://github.com/ForbesLindesay/tsconfig.git"
   },
   "bugs": {
-    "url": "https://github.com/ThreadsStyling/tsconfig/issues"
+    "url": "https://github.com/ForbesLindesay/tsconfig/issues"
   },
-  "homepage": "https://github.com/ThreadsStyling/tsconfig",
+  "homepage": "https://github.com/ForbesLindesay/tsconfig",
   "license": "MIT",
   "keywords": [
     "tslint",
     "typescript",
     "prettier",
-    "commitlint",
     "config"
   ],
   "scripts": {
@@ -25,11 +24,8 @@
     "check-prettier-conflicts": "tslint-config-prettier-check './index.js' && tslint-config-prettier-check './react.js'",
     "release": "semantic-release"
   },
-  "dependencies": {
-    "@commitlint/config-conventional": "^8.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
@@ -40,7 +36,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },

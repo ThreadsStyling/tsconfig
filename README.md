@@ -1,20 +1,20 @@
 # tsconfig
 
-ThreadsStyling tsconfig, tslint, prettier etc. configs. These shared configs are used to set up our TypeScript projects.
+Forbes Lindesay's tsconfig, tslint, prettier etc. configs. These shared configs are used to set up our TypeScript projects.
 
 ## TypeScript Config
 
-To use Threads' tsconfig as your default config. Install `typescript` via:
+To use my tsconfig as your default config. Install `typescript` via:
 
 ```sh
-yarn add -D @threads/tsconfig typescript
+yarn add -D @forbeslindesay/tsconfig typescript
 ```
 
 and add the following `tsconfig.json` in your project's root directory:
 
 ```json
 {
-  "extends": "@threads/tsconfig",
+  "extends": "@forbeslindesay/tsconfig",
   "compilerOptions": {
     "outDir": "lib"
   },
@@ -38,17 +38,17 @@ In `package.json` add:
 
 ## TSLint Config
 
-To use Threads' tslint as your default config. Install `tslint` via:
+To use my tslint as your default config. Install `tslint` via:
 
 ```sh
-yarn add -D @threads/tsconfig tslint
+yarn add -D @forbeslindesay/tsconfig tslint
 ```
 
 and add the following `tslint.json` in your project's root directory:
 
 ```json
 {
-  "extends": "@threads/tsconfig/tslint"
+  "extends": "@forbeslindesay/tsconfig/tslint"
 }
 ```
 
@@ -68,16 +68,16 @@ In `package.json` add:
 
 ## Prettier Config
 
-To use Threads' prettier as your default config. Install `prettier` via:
+To use my prettier as your default config. Install `prettier` via:
 
 ```sh
-yarn add -D @threads/tsconfig prettier
+yarn add -D @forbeslindesay/tsconfig prettier
 ```
 
 and add the following `prettier.config.js` in your project's root directory:
 
 ```json
-module.exports = require('@threads/tsconfig/prettier');
+module.exports = require('@forbeslindesay/tsconfig/prettier');
 ```
 
 In `package.json` add:
@@ -95,18 +95,12 @@ In `package.json` add:
 }
 ```
 
-## Husky / Lint-Staged / Commit Lint
+## Husky / Lint-Staged
 
 We recommend using husky with lint staged. To do this, run:
 
 ```sh
-yarn add -D @threads/tsconfig @commitlint/cli tslint prettier husky lint-staged
-```
-
-add the following `commitlint.config.js` in your project's root directory:
-
-```js
-module.exports = require('@threads/tsconfig/commitlint');
+yarn add -D @forbeslindesay/tsconfig tslint prettier husky lint-staged
 ```
 
 and add the following to package.json. This will run prettier and tslint on just files that have changed, and enforce that commits all start with `feat:`/`fix:`/etc.
@@ -114,9 +108,8 @@ and add the following to package.json. This will run prettier and tslint on just
 ```json
 {
   ...
-    "husky": {
+  "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
