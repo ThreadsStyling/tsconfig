@@ -67,7 +67,7 @@ module.exports = {
      * Warns for any two overloads that could be unified into
      * one by using a union or an optional/rest parameter.
      */
-    'unified-signatures': true,
+    'unified-signatures': false, // disabled because there are some cases that it gets wrong
     /**
      * Warns for an awaited value that is not a Promise.
      */
@@ -89,7 +89,7 @@ module.exports = {
      * It's fine to use these while debugging, but they
      * should not be committed.
      */
-    'no-console': [true, 'log', 'dir'],
+    'no-console': [true, 'log', 'dir'], // use `console.info` if the log is intentional
     /**
      * Disallows access to the constructors of `String`,
      * `Number`, and `Boolean`.
@@ -171,7 +171,7 @@ module.exports = {
     /**
      * Disallows shadowing variable declarations.
      */
-    'no-shadowed-variable': true,
+    'no-shadowed-variable': false, // disabled because I find it super annoying
     /**
      * Forbids array literals to contain missing elements.
      */
@@ -362,5 +362,10 @@ module.exports = {
      * Disallows variable names like `any`, `Number`, `string` etc.
      */
     'variable-name': [true, 'ban-keywords'],
+
+    /**
+     * Enforces that class members that are public are explicitly marked `public`.
+     */
+    'member-access': true,
   },
 };
