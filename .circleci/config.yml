@@ -65,7 +65,7 @@ workflows:
   master:
     jobs:
       - master:
-          context: common-env-vars
+          context: common-env
           filters:
             branches:
               only: master
