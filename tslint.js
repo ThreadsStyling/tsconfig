@@ -16,7 +16,10 @@ module.exports = {
       true,
       [
         ['Object', 'Avoid using the `Object` type. Did you mean `object`?'],
-        ['Function', 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.'],
+        [
+          'Function',
+          'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
+        ],
         ['Boolean', 'Avoid using the `Boolean` type. Did you mean `boolean`?'],
         ['Number', 'Avoid using the `Number` type. Did you mean `number`?'],
         ['String', 'Avoid using the `String` type. Did you mean `string`?'],
@@ -358,6 +361,13 @@ module.exports = {
     /**
      * Disallows imports of specified modules. Instead, sub-path imports should be used for these modules.
      */
-    'import-blacklist': [true, 'lodash', 'date-fns', '@material-ui/core', '@material-ui/styles', '@material-ui/icons'],
+    'import-blacklist': [
+      true,
+      'lodash',
+      'date-fns',
+      '@material-ui/core',
+      '@material-ui/styles',
+      '@material-ui/icons',
+    ],
   },
 };
