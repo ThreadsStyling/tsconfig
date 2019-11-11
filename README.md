@@ -36,6 +36,24 @@ In `package.json` add:
 }
 ```
 
+### TypesScript Config options you may want to enable/disable
+
+Compiler Options:
+
+- `experimentalDecorators` - Enables experimental support for ES decorators (we default this to `false`)
+- `importHelpers` - If you make `tslib` a dependency, you can tell typescript to import helpers from there, instead of inlining them in every file. Because we target ES2018, there are very few helpers (we default this to `false`)
+- `esModuleInterop` - enables `import foo from './foo';` to interop with CommonJS modules. You can disable this and use `import foo = require('./foo');` to avoid the extra helper being inserted in your code (we default this to `true`)
+- `noEmitOnError` - prevents emitting output when errors are reported. This is set to `false` so you can test your code even if it doesn't typecheck. (we default this to `false`)
+- `declaration` - you can skip generating declaration files if you're not going to publish your code as a library (we default this to `true`)
+
+You may want to ignore type checking in your tests:
+
+```json
+{
+  "exclude": ["node_modules", "lib", "src/__tests__", "src/**/__tests__/**/*.*", "*.test.ts"]
+}
+```
+
 ## TSLint Config
 
 To use Threads' tslint as your default config. Install `tslint` via:
