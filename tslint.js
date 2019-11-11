@@ -355,5 +355,9 @@ module.exports = {
      * Disallows variable names like `any`, `Number`, `string` etc.
      */
     'variable-name': [true, 'ban-keywords'],
+    /**
+     * Disallows imports of specified modules. Instead, sub-path imports should be used for these modules.
+     */
+    'import-blacklist': [true, 'lodash', 'date-fns', '@material-ui/core', '@material-ui/styles', '@material-ui/icons'],
   },
 };
