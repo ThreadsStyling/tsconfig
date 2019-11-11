@@ -66,6 +66,12 @@ In `package.json` add:
 }
 ```
 
+### Configure Linting
+
+You can enable or disable tslint rules on a per project basis by adding `"rule-name": false` in `tslint.json`'s `"rules"` object. You can also disable a lint rule for an individual statement using `// tslint:disable-next-line:object-literal-sort-keys` in your code. You can use `// tslint:disable` to disable all tslint rules for an entire file. See https://palantir.github.io/tslint/usage/rule-flags/ for more on this.
+
+You can find a complete list of what each rule means here: https://palantir.github.io/tslint/rules/
+
 ## Prettier Config
 
 To use Threads' prettier as your default config. Install `prettier` via:
