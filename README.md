@@ -54,20 +54,23 @@ You may want to ignore type checking in your tests:
 }
 ```
 
-## TSLint Config
+## ESLint Config
 
-To use Threads' tslint as your default config. Install `tslint` via:
+To use Threads' eslint as your default config. Install `eslint` via:
 
 ```sh
-yarn add -D @threads/tsconfig tslint
+yarn add -D @threads/tsconfig eslint
 ```
 
-and add the following `tslint.json` in your project's root directory:
+and add the following `.eslintrc.js` in your project's root directory:
 
-```json
-{
-  "extends": "@threads/tsconfig/tslint"
-}
+```js
+module.exports = {
+  parserOptions: {
+    project: './path/to/tsconfig.json',
+  },
+  extends: ['@threads/tsconfig/eslint'],
+};
 ```
 
 In `package.json` add:
@@ -77,7 +80,7 @@ In `package.json` add:
   ...
   "scripts": {
     ...
-    "lint": "tslint './src/**/*.{ts,tsx}' -t verbose -p ."
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     ...
   }
   ...
@@ -86,9 +89,9 @@ In `package.json` add:
 
 ### Configure Linting
 
-You can enable or disable tslint rules on a per project basis by adding `"rule-name": false` in `tslint.json`'s `"rules"` object. You can also disable a lint rule for an individual statement using `// tslint:disable-next-line:object-literal-sort-keys` in your code. You can use `// tslint:disable` to disable all tslint rules for an entire file. See https://palantir.github.io/tslint/usage/rule-flags/ for more on this.
+You can enable or disable eslint rules on a per project basis by adding `'rule-name': 'off'` in `.eslintrc.js`'s `rules` object. You can also disable a lint rule for an individual statement using `// eslint-disable-next-line name-of-rule` in your code. You can use `/* eslint-disable */` to disable all eslint rules for an entire file. See https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments for more on this.
 
-You can find a complete list of what each rule means here: https://palantir.github.io/tslint/rules/
+You can find a complete list of what each rule means here: [ESLint](https://eslint.org/docs/rules/) and [Typescript](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
 
 ## Prettier Config
 
@@ -158,6 +161,46 @@ and add the following to package.json. This will run prettier and tslint on just
   ...
 }
 ```
+
+---
+
+# 🚧 TSLint has been [deprecated](https://github.com/palantir/tslint/releases/tag/6.0.0) 🚧
+
+## TSLint Config
+
+To use Threads' tslint as your default config. Install `tslint` via:
+
+```sh
+yarn add -D @threads/tsconfig tslint
+```
+
+and add the following `tslint.json` in your project's root directory:
+
+```json
+{
+  "extends": "@threads/tsconfig/tslint"
+}
+```
+
+In `package.json` add:
+
+```json
+{
+  ...
+  "scripts": {
+    ...
+    "lint": "tslint './src/**/*.{ts,tsx}' -t verbose -p ."
+    ...
+  }
+  ...
+}
+```
+
+### Configure Linting
+
+You can enable or disable tslint rules on a per project basis by adding `"rule-name": false` in `tslint.json`'s `"rules"` object. You can also disable a lint rule for an individual statement using `// tslint:disable-next-line:object-literal-sort-keys` in your code. You can use `// tslint:disable` to disable all tslint rules for an entire file. See https://palantir.github.io/tslint/usage/rule-flags/ for more on this.
+
+You can find a complete list of what each rule means here: https://palantir.github.io/tslint/rules/
 
 ## License
 
