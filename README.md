@@ -73,6 +73,19 @@ module.exports = {
 };
 ```
 
+In `.eslintignore` add:
+
+```
+node_modules
+lib
+dist
+dev
+coverage
+
+.eslintrc.js
+prettier.config.js
+```
+
 In `package.json` add:
 
 ```json
