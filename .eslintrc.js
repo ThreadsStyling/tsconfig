@@ -23,41 +23,111 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'prefer-arrow', 'import', 'jsdoc'],
   rules: {
+    /**
+     * Require that member overloads be consecutive
+     */
     '@typescript-eslint/adjacent-overload-signatures': 'error',
+    /**
+     * Disallows awaiting a value that is not a Thenable
+     */
     '@typescript-eslint/await-thenable': 'error',
+    /**
+     * Bans specific types from being used
+     */
     '@typescript-eslint/ban-types': [
       'error',
       {
         types: {
+          Boolean: 'Avoid using the `Boolean` type. Did you mean `boolean`?',
+          Symbol: 'Avoid using the `Boolean` type. Did you mean `symbol`?',
+          Number: 'Avoid using the `Number` type. Did you mean `number`?',
+          String: 'Avoid using the `String` type. Did you mean `string`?',
           Object: 'Avoid using the `Object` type. Did you mean `object`?',
           Function:
             'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
         },
       },
     ],
+    /**
+     * Enforces naming conventions for everything across a codebase
+     */
     '@typescript-eslint/naming-convention': 'error',
-    '@typescript-eslint/consistent-type-assertions': 'off',
+    /**
+     * Enforces consistent usage of type assertions
+     */
+    '@typescript-eslint/consistent-type-assertions': ['error', {assertionStyle: 'as'}],
+    /**
+     * Enforce dot notation whenever possible
+     */
     '@typescript-eslint/dot-notation': 'error',
+    /**
+     * Disallow empty functions
+     */
     '@typescript-eslint/no-empty-function': 'error',
+    /**
+     * Forbids the use of classes as namespaces
+     */
     '@typescript-eslint/no-extraneous-class': 'error',
+    /**
+     * Requires Promise-like values to be handled appropriately
+     */
     '@typescript-eslint/no-floating-promises': 'error',
+    /**
+     * Disallow iterating over an array with a for-in loop
+     */
     '@typescript-eslint/no-for-in-array': 'error',
+    /**
+     * Enforce valid definition of `new` and `constructor`
+     */
     '@typescript-eslint/no-misused-new': 'error',
+    /**
+     * Disallow the use of parameter properties in class constructors
+     */
     '@typescript-eslint/no-parameter-properties': 'error',
+    /**
+     * Disallow aliasing this
+     */
     '@typescript-eslint/no-this-alias': 'error',
+    /**
+     * Warns if a type assertion does not change the type of an expression
+     */
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    /**
+     * Disallow unused expressions
+     */
     '@typescript-eslint/no-unused-expressions': [
       'error',
       {
         allowShortCircuit: true,
       },
     ],
+    /**
+     * Prefer a `for-of` loop over a standard `for` loop if the index is only used to access the array being iterated
+     */
     '@typescript-eslint/prefer-for-of': 'error',
+    /**
+     * Use function types instead of interfaces with call signatures
+     */
     '@typescript-eslint/prefer-function-type': 'error',
+    /**
+     * Require the use of the `namespace` keyword instead of the `module` keyword to declare custom TypeScript modules
+     */
     '@typescript-eslint/prefer-namespace-keyword': 'error',
+    /**
+     * Requires that private members are marked as `readonly` if they're never modified outside of the constructor
+     */
     '@typescript-eslint/prefer-readonly': 'error',
+    /**
+     * Requires any function or method that returns a Promise to be marked async
+     */
     '@typescript-eslint/promise-function-async': 'error',
+    /**
+     * When adding two variables, operands must both be of type number or of type string
+     */
     '@typescript-eslint/restrict-plus-operands': 'error',
+    /**
+     * Sets preference level for triple slash directives versus ES6-style import declarations
+     */
     '@typescript-eslint/triple-slash-reference': [
       'error',
       {
@@ -66,11 +136,30 @@ module.exports = {
         lib: 'always',
       },
     ],
+    /**
+     * Enforces unbound methods are called with their expected scope
+     */
     '@typescript-eslint/unbound-method': 'error',
+    /**
+     * Warns for any two overloads that could be unified into one by using a union or an optional/rest parameter
+     */
     '@typescript-eslint/unified-signatures': 'error',
+    /**
+     * Enforce camelCase naming convention
+     */
     camelcase: 'error',
+    /**
+     * Ensures `super()` is called in derived class constructors
+     */
     'constructor-super': 'error',
+    /**
+     * Require === and !==
+     */
     eqeqeq: ['error', 'smart'],
+    /**
+     * Blacklist certain identifiers to prevent them being used
+     * "There are only two hard things in Computer Science: cache invalidation and naming things." — Phil Karlton
+     */
     'id-blacklist': [
       'error',
       'any',
@@ -83,8 +172,17 @@ module.exports = {
       'Undefined',
       'undefined',
     ],
+    /**
+     * Require identifiers to match a specified regular expression
+     */
     'id-match': 'error',
+    /**
+     * Report imported names marked with @deprecated documentation tag
+     */
     'import/no-deprecated': 'error',
+    /**
+     * Forbid the use of extraneous packages
+     */
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -92,12 +190,33 @@ module.exports = {
         optionalDependencies: false,
       },
     ],
+    /**
+     * Reports invalid alignment of JSDoc block asterisks.
+     */
     'jsdoc/check-alignment': 'error',
+    /**
+     * Reports invalid padding inside JSDoc blocks.
+     */
     'jsdoc/check-indentation': 'error',
+    /**
+     * Enforces a consistent padding of the block description.
+     */
     'jsdoc/newline-after-description': 'error',
+    /**
+     * This rule reports types being used on @param or @returns.
+     */
     'jsdoc/no-types': 'error',
+    /**
+     * The use of bitwise operators in JavaScript is very rare and often & or | is simply a mistyped && or ||, which will lead to unexpected behavior.
+     */
     'no-bitwise': 'error',
+    /**
+     * Disallow assignment operators in conditional statements
+     */
     'no-cond-assign': 'error',
+    /**
+     * Disallow console.log
+     */
     'no-console': [
       'error',
       {
@@ -130,15 +249,45 @@ module.exports = {
         ],
       },
     ],
+    /**
+     * Disallow the use of debugger
+     */
     'no-debugger': 'error',
+    /**
+     * Rule to disallow a duplicate case label
+     */
     'no-duplicate-case': 'error',
+    /**
+     * Disallow duplicate imports
+     */
     'no-duplicate-imports': 'error',
+    /**
+     * Disallow empty destructuring patterns
+     */
     'no-empty': 'error',
+    /**
+     * Disallow eval()
+     */
     'no-eval': 'error',
+    /**
+     * Disallow Case Statement Fallthrough
+     */
     'no-fallthrough': 'error',
+    /**
+     * Disallow this keywords outside of classes or class-like objects.
+     */
     'no-invalid-this': 'error',
+    /**
+     * Disallow Primitive Wrapper Instances
+     */
     'no-new-wrappers': 'error',
+    /**
+     * Disallow variable redeclaration
+     */
     'no-redeclare': 'error',
+    /**
+     * Disallow specific imports
+     */
     'no-restricted-imports': [
       'error',
       'lodash',
@@ -147,25 +296,70 @@ module.exports = {
       '@material-ui/styles',
       '@material-ui/icons',
     ],
+    /**
+     * Disallow Use of the Comma Operator
+     */
     'no-sequences': 'error',
+    /**
+     * Disallow Shadowing of Restricted Names
+     */
     'no-shadow': [
       'error',
       {
         hoist: 'all',
       },
     ],
+    /**
+     * Disallow sparse arrays
+     */
     'no-sparse-arrays': 'error',
+    /**
+     * Disallow template literal placeholder syntax in regular strings
+     */
     'no-template-curly-in-string': 'error',
+    /**
+     * Disallow Initializing to undefined
+     */
     'no-undef-init': 'error',
+    /**
+     * Disallow dangling underscores in identifiers
+     */
     'no-underscore-dangle': 'error',
+    /**
+     * Disallow control flow statements in finally blocks
+     */
     'no-unsafe-finally': 'error',
+    /**
+     * Require let or const instead of var
+     */
     'no-var': 'error',
+    /**
+     * Disallow use of the void operator.
+     */
     'no-void': 'error',
+    /**
+     * Enforce variables to be declared either separately in functions
+     */
     'one-var': ['error', 'never'],
+    /**
+     * Prefer arrow functions, allowing named functions at top level
+     */
     'prefer-arrow/prefer-arrow-functions': ['error', {allowStandaloneDeclarations: true}],
+    /**
+     * Suggest using of const declaration for variables that are never modified after declared
+     */
     'prefer-const': 'error',
+    /**
+     * Require Radix Parameter
+     */
     radix: 'error',
+    /**
+     * Require calls to isNaN() when checking for NaN
+     */
     'use-isnan': 'error',
+    /**
+     * The missing rules from tslint that cannot be translated to eslint
+     */
     '@typescript-eslint/tslint/config': [
       'error',
       {
