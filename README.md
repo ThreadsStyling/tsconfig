@@ -7,7 +7,7 @@ ThreadsStyling tsconfig, tslint, prettier etc. configs. These shared configs are
 To use Threads' eslint config, install eslint, the typescript parser, and the required plugins:
 
 ```sh
-yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin @typescript-eslint/eslint-plugin-tslint eslint-config-prettier eslint-plugin-import eslint-plugin-jsdoc eslint-plugin-prefer-arrow
+yarn add -D @threads/tsconfig eslint
 ```
 
 In `package.json` add:
