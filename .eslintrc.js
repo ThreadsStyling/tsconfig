@@ -15,7 +15,19 @@ module.exports = {
   env: {
     es6: true,
   },
-  extends: ['prettier', 'prettier/@typescript-eslint'],
+  extends: [
+    /**
+     * Turns off all rules that are unnecessary or might conflict with Prettier.
+     */
+    'prettier',
+    /**
+     * Turns off all TypeScript rules that are unnecessary or might conflict with Prettier.
+     */
+    'prettier/@typescript-eslint',
+  ],
+  /**
+   * An ESLint parser which leverages TypeScript ESTree to allow for ESLint to lint TypeScript source code.
+   */
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
