@@ -33,7 +33,7 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'prefer-arrow', 'import', 'jsdoc'],
+  plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'import', 'jsdoc'],
   rules: {
     /**
      * Require that member overloads be consecutive
@@ -156,6 +156,14 @@ module.exports = {
      * Warns for any two overloads that could be unified into one by using a union or an optional/rest parameter
      */
     '@typescript-eslint/unified-signatures': 'error',
+    /**
+     * Prevents conditionals where the type is always truthy or always falsy
+     */
+    '@typescript-eslint/no-unnecessary-condition': ['error', {allowConstantLoopConditions: true}],
+    /**
+     *
+     */
+    'prefer-arrow-callback': ['error', {allowNamedFunctions: true}],
     /**
      * Enforce camelCase naming convention
      */
@@ -353,10 +361,6 @@ module.exports = {
      * Enforce variables to be declared either separately in functions
      */
     'one-var': ['error', 'never'],
-    /**
-     * Prefer arrow functions, allowing named functions at top level
-     */
-    'prefer-arrow/prefer-arrow-functions': ['error', {allowStandaloneDeclarations: true}],
     /**
      * Suggest using of const declaration for variables that are never modified after declared
      */
