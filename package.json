@@ -20,16 +20,24 @@
   "scripts": {
     "prettier:write": "prettier --ignore-path .gitignore --write './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
     "prettier:check": "prettier --ignore-path .gitignore --list-different './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
-    "lint": "tslint './src/**/*.{ts,tsx}' -t verbose -p .",
+    "tslint": "tslint './src/**/*.{ts,tsx}' -t verbose -p .",
+    "lint": "eslint -c .eslintrc.js --ext .tsx,.ts ./src/**/*",
     "typecheck": "tsc --noEmit",
     "check-prettier-conflicts": "tslint-config-prettier-check './index.js' && tslint-config-prettier-check './react.js'",
     "release": "semantic-release"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^8.0.0"
+    "@commitlint/config-conventional": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsdoc": "^28.6.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
+    "eslint": "^7.4.0",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",

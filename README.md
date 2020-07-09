@@ -2,6 +2,28 @@
 
 ThreadsStyling tsconfig, tslint, prettier etc. configs. These shared configs are used to set up our TypeScript projects.
 
+## ESLint
+
+To use Threads' eslint config, install eslint, the typescript parser, and the required plugins:
+
+```sh
+yarn add -D @threads/tsconfig eslint
+```
+
+In `package.json` add:
+
+```json
+{
+  ...
+  "scripts": {
+    ...
+    "lint": "eslint -c @threads/tsconfig/.eslintrc --ext .tsx,.ts ./src/**/*"
+    ...
+  }
+  ...
+}
+```
+
 ## TypeScript Config
 
 To use Threads' tsconfig as your default config. Install `typescript` via:
