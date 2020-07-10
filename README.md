@@ -10,6 +10,12 @@ To use Threads' eslint config, install eslint, the typescript parser, and the re
 yarn add -D @threads/tsconfig eslint
 ```
 
+and add the following `.eslintrc.js` in your project's root directory:
+
+```js
+module.exports = require('@threads/tsconfig/.eslintrc');
+```
+
 In `package.json` add:
 
 ```json
@@ -17,7 +23,7 @@ In `package.json` add:
   ...
   "scripts": {
     ...
-    "lint": "eslint -c @threads/tsconfig/.eslintrc --ext .tsx,.ts ./src/**/*"
+    "lint": "eslint -c .eslintrc.js --ext .tsx,.ts src"
     ...
   }
   ...
