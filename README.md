@@ -1,5 +1,8 @@
 # tsconfig
 
+[![CircleCI](https://circleci.com/gh/ThreadsStyling/tsconfig.svg?style=svg)](https://circleci.com/gh/ThreadsStyling/tsconfig)
+[![npm version](https://badge.fury.io/js/%40threads%2Ftsconfig.svg)](https://badge.fury.io/js/%40threads%2Ftsconfig)
+
 ThreadsStyling tsconfig, tslint, prettier etc. configs. These shared configs are used to set up our TypeScript projects.
 
 ## ESLint
