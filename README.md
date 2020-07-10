@@ -1,5 +1,8 @@
 # tsconfig
 
+[![CircleCI](https://circleci.com/gh/ThreadsStyling/tsconfig.svg?style=svg)](https://circleci.com/gh/ThreadsStyling/tsconfig)
+[![npm version](https://badge.fury.io/js/%40threads%2Ftsconfig.svg)](https://badge.fury.io/js/%40threads%2Ftsconfig)
+
 ThreadsStyling tsconfig, tslint, prettier etc. configs. These shared configs are used to set up our TypeScript projects.
 
 ## ESLint
@@ -10,6 +13,12 @@ To use Threads' eslint config, install eslint, the typescript parser, and the re
 yarn add -D @threads/tsconfig eslint
 ```
 
+and add the following `.eslintrc.js` in your project's root directory:
+
+```js
+module.exports = require('@threads/tsconfig/.eslintrc');
+```
+
 In `package.json` add:
 
 ```json
@@ -17,7 +26,7 @@ In `package.json` add:
   ...
   "scripts": {
     ...
-    "lint": "eslint -c @threads/tsconfig/.eslintrc --ext .tsx,.ts ./src/**/*"
+    "lint": "eslint -c .eslintrc.js --ext .tsx,.ts src"
     ...
   }
   ...
