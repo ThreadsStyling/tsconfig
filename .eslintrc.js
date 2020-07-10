@@ -32,6 +32,9 @@ module.exports = {
   parserOptions: {
     project: 'tsconfig.json',
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'import', 'jsdoc'],
   rules: {
@@ -60,10 +63,6 @@ module.exports = {
         },
       },
     ],
-    /**
-     * Enforces naming conventions for everything across a codebase
-     */
-    '@typescript-eslint/naming-convention': 'error',
     /**
      * Enforces consistent usage of type assertions
      */
@@ -165,10 +164,6 @@ module.exports = {
      */
     'prefer-arrow-callback': ['error', {allowNamedFunctions: true}],
     /**
-     * Enforce camelCase naming convention
-     */
-    camelcase: 'error',
-    /**
      * Ensures `super()` is called in derived class constructors
      */
     'constructor-super': 'error',
@@ -206,7 +201,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: false,
+        devDependencies: ['**/__tests__/**/*'],
         optionalDependencies: false,
       },
     ],
@@ -341,10 +336,6 @@ module.exports = {
      * Disallow Initializing to undefined
      */
     'no-undef-init': 'error',
-    /**
-     * Disallow dangling underscores in identifiers
-     */
-    'no-underscore-dangle': 'error',
     /**
      * Disallow control flow statements in finally blocks
      */
