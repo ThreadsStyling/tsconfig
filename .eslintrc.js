@@ -36,7 +36,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', '@typescript-eslint/tslint', 'import', 'jsdoc'],
+  plugins: ['@typescript-eslint', 'import', 'jsdoc'],
   rules: {
     /**
      * Require that member overloads be consecutive
@@ -364,21 +364,5 @@ module.exports = {
      * Require calls to isNaN() when checking for NaN
      */
     'use-isnan': 'error',
-    /**
-     * The missing rules from tslint that cannot be translated to eslint
-     */
-    '@typescript-eslint/tslint/config': [
-      'error',
-      {
-        rules: {
-          encoding: true,
-          'no-mergeable-namespace': true,
-          'prefer-while': true,
-          'return-undefined': true,
-          'strict-type-predicates': true,
-          'switch-final-break': [true, 'always'],
-        },
-      },
-    ],
   },
 };
