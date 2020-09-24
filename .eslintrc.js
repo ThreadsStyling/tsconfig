@@ -24,6 +24,14 @@ module.exports = {
      * Turns off all TypeScript rules that are unnecessary or might conflict with Prettier.
      */
     'prettier/@typescript-eslint',
+    /**
+     * Adds React-related rules.
+     */
+    'plugin:react/recommended',
+    /**
+     * Adds React hooks-related rules.
+     */
+    'plugin:react-hooks/recommended',
   ],
   /**
    * An ESLint parser which leverages TypeScript ESTree to allow for ESLint to lint TypeScript source code.
@@ -63,7 +71,7 @@ module.exports = {
           /*
            * Allow use of '{}' - we use it to define React components with no properties
            */
-          '{}': false;
+          '{}': false,
         },
       },
     ],
@@ -294,7 +302,7 @@ module.exports = {
     'no-fallthrough': 'error',
     /**
      * Disallow this keywords outside of classes or class-like objects.
-     * 
+     *
      * We use class fields in our class components, which is an ES proposal.
      * Eslint generates false positives for no-invalid-this in this case -
      * we need to use the babel plugin, which checks them correctly.
@@ -373,5 +381,30 @@ module.exports = {
      * Require calls to isNaN() when checking for NaN
      */
     'use-isnan': 'error',
+
+    // React-specific rule overrides
+
+    /**
+     * We use TypeScript - we don't use dynamic prop type checks
+     */
+    'react/prop-types': 'off',
+    /**
+     * We use anonymous functions for components - having displayNames would be good,
+     * but we don't want to change the entire code base
+     */
+    'react/display-name': 'off',
+    /**
+     * Enable ' in unescaped entities - it's safe and escaping it makes adding copy harder
+     */
+    'react/no-unescaped-entities': [
+      'error',
+      {
+        forbid: ['>', '}', '"'],
+      },
+    ],
+    /**
+     * Make exhaustive deps mandatory
+     */
+    'react-hooks/exhaustive-deps': 'error',
   },
 };
