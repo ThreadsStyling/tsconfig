@@ -36,7 +36,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'import', 'jsdoc'],
+  plugins: ['@typescript-eslint', 'import', 'jsdoc', '@babel'],
   rules: {
     /**
      * Require that member overloads be consecutive
@@ -60,6 +60,10 @@ module.exports = {
           Object: 'Avoid using the `Object` type. Did you mean `object`?',
           Function:
             'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
+          /*
+           * Allow use of '{}' - we use it to define React components with no properties
+           */
+          '{}': false;
         },
       },
     ],
@@ -201,7 +205,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/__tests__/**/*'],
+        devDependencies: ['**/__tests__/**/*', '**/__story__/**/*', '**/fixtures/**/*'],
         optionalDependencies: false,
       },
     ],
@@ -290,8 +294,13 @@ module.exports = {
     'no-fallthrough': 'error',
     /**
      * Disallow this keywords outside of classes or class-like objects.
+     * 
+     * We use class fields in our class components, which is an ES proposal.
+     * Eslint generates false positives for no-invalid-this in this case -
+     * we need to use the babel plugin, which checks them correctly.
      */
-    'no-invalid-this': 'error',
+    'no-invalid-this': false,
+    '@babel/no-invalid-this': 'error',
     /**
      * Disallow Primitive Wrapper Instances
      */
