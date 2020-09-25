@@ -307,7 +307,7 @@ module.exports = {
      * Eslint generates false positives for no-invalid-this in this case -
      * we need to use the babel plugin, which checks them correctly.
      */
-    'no-invalid-this': false,
+    'no-invalid-this': 'off',
     '@babel/no-invalid-this': 'error',
     /**
      * Disallow Primitive Wrapper Instances
