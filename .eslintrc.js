@@ -335,12 +335,8 @@ module.exports = {
     /**
      * Disallow Shadowing of Restricted Names
      */
-    'no-shadow': [
-      'error',
-      {
-        hoist: 'all',
-      },
-    ],
+    'no-shadow': ['off'],
+    '@typescript-eslint/no-shadow': ['error'],
     /**
      * Disallow sparse arrays
      */
@@ -361,10 +357,6 @@ module.exports = {
      * Require let or const instead of var
      */
     'no-var': 'error',
-    /**
-     * Disallow use of the void operator.
-     */
-    'no-void': 'error',
     /**
      * Enforce variables to be declared either separately in functions
      */
