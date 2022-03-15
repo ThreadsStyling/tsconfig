@@ -19,19 +19,21 @@
   "scripts": {
     "prettier:write": "prettier --ignore-path .gitignore --write './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
     "prettier:check": "prettier --ignore-path .gitignore --list-different './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
-    "lint": "tslint './src/**/*.{ts,tsx}' -t verbose -p .",
-    "typecheck": "tsc --noEmit",
-    "check-prettier-conflicts": "tslint-config-prettier-check './index.js' && tslint-config-prettier-check './react.js'",
-    "release": "semantic-release"
+    "lint": "eslint --config .eslintrc-ts.js --no-eslintrc --ext .ts,.tsx src",
+    "lint:fix": "eslint --fix --config .eslintrc-ts.js --no-eslintrc --ext .ts,.tsx src",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {},
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint": "^8.11.0",
+    "eslint-plugin-import": "^2.25.4",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.17",
     "tslint": "^5.18.0",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.2"
   },
   "husky": {
@@ -40,12 +42,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "tslint -t verbose -p .",
-      "git add"
-    ],
-    "*.{md,json,yaml,js,jsx}": [
+    "*.{md,json,yaml,js,jsx,ts,tsx}": [
       "prettier --write",
       "git add"
     ]

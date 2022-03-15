@@ -7,6 +7,7 @@
     "skipLibCheck": true,
     "experimentalDecorators": false,
     "importHelpers": false,
+    "isolatedModules": true,
     "pretty": true,
     "sourceMap": true,
     "strict": true,
@@ -19,6 +20,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "declaration": true,
-    "lib": ["es2018"]
+    "lib": ["ES2020"]
   }
 }

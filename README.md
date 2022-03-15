@@ -36,21 +36,32 @@ In `package.json` add:
 }
 ```
 
-## TSLint Config
+## ESLint Config
 
-To use my tslint as your default config. Install `tslint` via:
+To use my eslint as your default config. Install `eslint` via:
 
 ```sh
-yarn add -D @forbeslindesay/tsconfig tslint
+yarn add -D \
+  eslint \
+  eslint-plugin-import \
+  @typescript-eslint/eslint-plugin \
+  @typescript-eslint/parser
 ```
 
-and add the following `tslint.json` in your project's root directory:
+and add the following `.eslintrc.js` in your project's root directory:
 
-```json
-{
-  "extends": "@forbeslindesay/tsconfig/tslint"
-}
+```js
+module.exports = require('@forbeslindesay/tsconfig/eslint')({
+  internalRegex: '^@my-name',
+});
 ```
+
+and add the following `.eslintrc-ts.js` in your project's root directory:
+
+````js
+module.exports = require('@forbeslindesay/tsconfig/eslint-ts')({
+  internalRegex: '^@my-name',
+});
 
 In `package.json` add:
 
@@ -59,12 +70,13 @@ In `package.json` add:
   ...
   "scripts": {
     ...
-    "lint": "tslint './src/**/*.{ts,tsx}' -t verbose -p ."
+    "lint": "eslint --config .eslintrc-ts.js --no-eslintrc --ext .ts,.tsx src",
+    "lint:fix": "eslint --fix --config .eslintrc-ts.js --no-eslintrc --ext .ts,.tsx src"
     ...
   }
   ...
 }
-```
+````
 
 ## Prettier Config
 
@@ -100,10 +112,10 @@ In `package.json` add:
 We recommend using husky with lint staged. To do this, run:
 
 ```sh
-yarn add -D @forbeslindesay/tsconfig tslint prettier husky lint-staged
+yarn add -D @forbeslindesay/tsconfig prettier husky lint-staged
 ```
 
-and add the following to package.json. This will run prettier and tslint on just files that have changed, and enforce that commits all start with `feat:`/`fix:`/etc.
+and add the following to package.json. This will run prettier on just files that have changed.
 
 ```json
 {
@@ -114,12 +126,7 @@ and add the following to package.json. This will run prettier and tslint on just
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "tslint -t verbose -p .",
-      "git add"
-    ],
-    "*.{md,json,yaml,js,jsx}": [
+    "*.{md,json,yaml,js,jsx,ts,tsx}": [
       "prettier --write",
       "git add"
     ]
