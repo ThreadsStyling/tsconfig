@@ -335,8 +335,8 @@ module.exports = {
     /**
      * Disallow Shadowing of Restricted Names
      */
-    'no-shadow': ['off'],
-    '@typescript-eslint/no-shadow': ['error'],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'error',
     /**
      * Disallow sparse arrays
      */
