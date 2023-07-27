@@ -15,6 +15,11 @@ module.exports = {
   env: {
     es6: true,
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   extends: [
     /**
      * Turns off all rules that are unnecessary or might conflict with Prettier.
@@ -44,7 +49,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'import', 'jsdoc', '@babel'],
+  plugins: ['@typescript-eslint', 'import', 'jsdoc', '@babel', 'unused-imports'],
   rules: {
     /**
      * Require that member overloads be consecutive
@@ -398,5 +403,12 @@ module.exports = {
      * Make exhaustive deps mandatory
      */
     'react-hooks/exhaustive-deps': 'error',
+    /**
+     * Make eslint warn about unused imports
+     */
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-vars': 'warn',
   },
 };
