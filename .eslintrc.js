@@ -102,7 +102,7 @@ module.exports = {
     /**
      * Disallow the use of parameter properties in class constructors
      */
-    '@typescript-eslint/no-parameter-properties': 'error',
+    '@typescript-eslint/parameter-properties': 'error',
     /**
      * Disallow aliasing this
      */
@@ -221,10 +221,6 @@ module.exports = {
      * Reports invalid padding inside JSDoc blocks.
      */
     'jsdoc/check-indentation': 'error',
-    /**
-     * Enforces a consistent padding of the block description.
-     */
-    'jsdoc/newline-after-description': 'error',
     /**
      * This rule reports types being used on @param or @returns.
      */
