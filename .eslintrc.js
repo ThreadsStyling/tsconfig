@@ -21,10 +21,6 @@ module.exports = {
      */
     'prettier',
     /**
-     * Turns off all TypeScript rules that are unnecessary or might conflict with Prettier.
-     */
-    'prettier/@typescript-eslint',
-    /**
      * Adds React-related rules.
      */
     'plugin:react/recommended',
