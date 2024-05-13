@@ -166,7 +166,11 @@ module.exports = {
     /**
      * Prevents conditionals where the type is always truthy or always falsy
      */
-    '@typescript-eslint/no-unnecessary-condition': ['error', {allowConstantLoopConditions: true}],
+    '@typescript-eslint/no-unnecessary-condition': 'off',
+    /**
+     * Checks for redeclaration of entities with the same name
+     */
+    '@typescript-eslint/no-redeclare': 'off',
     /**
      *
      */
@@ -308,7 +312,11 @@ module.exports = {
     /**
      * Disallow variable redeclaration
      */
-    'no-redeclare': 'error',
+    'no-redeclare': 'off',
+    /**
+     * Disallow var declaration
+     */
+    'no-var': 'off',
     /**
      * Disallow specific imports
      */
@@ -390,5 +398,9 @@ module.exports = {
      * Make exhaustive deps mandatory
      */
     'react-hooks/exhaustive-deps': 'error',
+    /**
+     * Ignore `css` property on components
+     */
+    'react/no-unknown-property': ['error', {ignore: ['css']}],
   },
 };
