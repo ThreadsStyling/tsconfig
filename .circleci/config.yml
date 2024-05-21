@@ -30,7 +30,7 @@ commands:
           command: yarn typecheck
       - run:
           name: Prettier Check
-          command: yarn prettier:check
+          command: yarn format:check
       - run:
           name: TSLint
           command: yarn lint
