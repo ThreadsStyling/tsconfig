@@ -19,8 +19,8 @@
     "config"
   ],
   "scripts": {
-    "prettier:write": "prettier --ignore-path .gitignore --write './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
-    "prettier:check": "prettier --ignore-path .gitignore --list-different './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
+    "format": "prettier --ignore-path .gitignore --write './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
+    "format:check": "prettier --ignore-path .gitignore --list-different './**/*.{md,json,yaml,js,jsx,ts,tsx}'",
     "tslint": "tslint './src/**/*.{ts,tsx}' -t verbose -p .",
     "lint": "eslint -c .eslintrc.js --ext .tsx,.ts ./src/**/*",
     "typecheck": "tsc --noEmit",
@@ -52,13 +52,11 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier --write",
-      "tslint -t verbose -p .",
-      "git add"
+      "yarn format",
+      "tslint -t verbose -p ."
     ],
     "*.{md,json,yaml,js,jsx}": [
-      "prettier --write",
-      "git add"
+      "yarn format"
     ]
   }
 }
