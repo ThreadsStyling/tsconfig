@@ -58,6 +58,5 @@
     "*.{md,json,yaml,js,jsx}": [
       "yarn format"
     ]
-  },
-  "version": "5.0.0-alpha.1"
+  }
 }
